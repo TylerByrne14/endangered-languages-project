@@ -77,38 +77,23 @@ function animateIntro() {
 }
 
 function animateExperience() {
-  const directions = [
-    { x: -120, y: -120 }, 
-    { x:    0, y: -120 }, 
-    { x:  120, y: -120 }, 
-    { x: -120, y:  120 }, 
-    { x:    0, y:  120 }, 
-    { x:  120, y:  120 }, 
-  ];
-
   const cards      = document.querySelectorAll('.category-card');
   const container  = document.querySelector('.scroll-container');
   const experience = document.getElementById('experience');
   let animated = false;
 
-  cards.forEach((card, i) => {
-    gsap.set(card, { x: directions[i].x, y: directions[i].y, opacity: 0 });
-  });
+  gsap.set(cards, { opacity: 0 });
 
   function runAnimation() {
     if (animated) return;
     if (container.scrollTop < experience.offsetTop - 10) return;
     animated = true;
 
-    cards.forEach((card, i) => {
-      gsap.to(card, {
-        x: 0,
-        y: 0,
-        opacity: 1,
-        duration: 0.75,
-        delay: i * 0.06,
-        ease: 'power3.out',
-      });
+    gsap.to(cards, {
+      opacity: 1,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: 'power2.out',
     });
   }
 
