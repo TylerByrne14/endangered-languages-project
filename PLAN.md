@@ -27,32 +27,23 @@ I wanted to pick a dataset that has something surpising and lends emotion before
 
 **Options / Angles Considered:**
 
-**US Lighthouses**
-- Angle: "Lights Out" a dark coastline where active lighthouses still sweep their beam and deactivated ones have gone cold. The story is about GPS making human navigation obsolete. I like the idea but the emotion has to be manufactured. The UI would be doing all the heavy lifting.
-
-**Nuclear Detonations**
-- Angle: "The Scale Problem" every test gets a circle. You scroll through 70 years of detonations and the circles grow. Then Tsar Bomba arrives and breaks the screen. 50,000 kilotons. The emotion is already attached without needing to be explained.
-
-**Endangered Languages**
-- Angle: "The Last Word" one language per screen. Its name, where it's spoken and how many people are left. The final screen is empty except for one line: *"Another language goes extinct every two weeks. This page will be out of date before you leave"* The data has people in it. Yaghan: 1 speaker. Taushiro: 1 speaker. Ubykh: 0. Breaks the sections up logically and makes the user view the numers as actual people
-
 **Dataset Chosen:** Endangered Languages
 
 **Reason:** The other two angles are about scale and loss in the abstract. This one is about specific people and I think there is the most emotion in that
 
 **Decision Made:**
-Endangered Languages, "The Last Word." Full-screen scroll cards. The last screen fades to nothing.
+Endangered Languages
 
 **Design Tradeoff:**
-The coordinates were provided and I think a map would've been a cool idea. However, a map would've felt too informational. I think pulling everything out to specifics paried with a visual aspect is best here.
+The coordinates were provided and I think a map would've been a cool idea. However, a map would've felt too informational. I think pulling everything out to specifics paaired with a visual aspect is best here
 
 **AI Workflow Notes:**
-- Prompt used: "I have three JSON datasets from a take-home brief: US lighthouses, nuclear detonations, and endangered languages. Read each dataset in full. For each one identify: (1) statistical outliers or data points that would surprise someone encountering this data for the first time, (2) patterns across the records that tell a story the raw numbers don't make obvious, (3) the single field or combination of fields that carries the most emotional weight. Then propose one specific creative angle per dataset, not a chart type, but a point of view, that could make someone feel something. Back each angle with evidence from the data itself. Rank all three and explain why."
+- Prompt used: "I have three JSON datasets from a take-home brief: US lighthouses, nuclear detonations, and endangered languages. Read each dataset in full. For each one identify: (1) statistical outliers or data points that would surprise someone encountering this data for the first time, (2) patterns across the records that tell a story the raw numbers don't make obvious, (3) the single field or combination of fields that carries the most emotional weight. Back each angle with evidence from the data itself"
 - What worked: Claude surfaced the 1-speaker entries and the language isolate category immediately. These had the emotional core and came from the data, not the UI.
 - What didn't work / done manually instead: kept pulling toward visual complexity. Maps, globes, scale comparisons. The coordinate fields were right there and it kept finding ways to use them. Every time I pushed for something more editorial it defaulted back toward plotting things spatially. The decision to strip it down to name, number, and a single line of copy was made against that
 
 **What I'd Improve With More Time:**
-Spending more time with each dataset before committing. I moved fairly quickly once the language data resonated. A slower pass might have surfaced an angle in the nuclear or lighthouse data that was worth considering longer.
+Spending more time with each dataset before committing. I moved fairly quickly once the language data resonated. A slower pass might have surfaced an angle in the nuclear or lighthouse data that was worth considering longer
 
 ---
 
@@ -72,30 +63,24 @@ Spending more time with each dataset before committing. I moved fairly quickly o
 ### Section 2 — Implementation Notes
 
 **Analysis:**
-The concept needed a visual hook that captured the emotion before any data was explained. I thought the opening page was a good visualization of this. By the time the user clicks into the experience they already have a feeling attached to what a dot means.
+The concept needed a visual hook that captured the emotion before any data was explained. I thought the opening page was a good visualization of this. By the time the user clicks into the experience they already have a feeling attached to what a dot means
 
 **Options / Angles Considered:**
-The original angle was purely text-driven, one language per full-screen card. The problem was that the emotion was almost entirely carried by the closing line. Switched to a dot-based visual system so the loss is visible throughout, not just at the end. Considered a map but ruled it out. A map makes it feel like geography. Dots make it feel like people.
+My original angle was purely text-driven, one language per full-screen card. The problem was that the emotion was almost entirely carried by the closing line. Switched to a dot-based visual system so the loss is visible throughout. Considered a map but ruled it out. A map makes it feel like geography when its about people
 
 **Decision Made:**
-Concept statement: "This experience makes you watch language extinction happen while you are reading about it."
 
-Emotional register: melancholy and urgency together. Not grief for something long gone but urgency for something still happening.
+Dots as people. The opening page scatters all dots across the screen and removes them one by one
 
-Interaction metaphor: dots as people. The opening page scatters all dots across the screen and removes them one by one over 10 seconds while the line "Another language goes extinct every two weeks. This page will be out of date before you leave" sits over the top. After the opening fades a Learn More button appears.
-
-The main experience has 6 vertical sections, one per status category: Vulnerable, Definitely Endangered, Severely Endangered, Critically Endangered, On the Brink, Extinct. Each section is a horizontal scroll that snaps between individual languages ordered from most to fewest speakers. Left panel shows name, family, country, region, and speaker count. Right panel shows dots in that category's color, scaled so each dot represents a set number of speakers specific to that category. Dots fade as you move through languages. A progress bar at the bottom of each section tracks how far through that category you are
-
-Key data fields carrying narrative weight:
 - speakers: drives the dot count and is the primary visual for each language
 - status: determines the category, the color, and the ordering of the whole experience
-- name: the identity anchor on every card, the thing that will be lost
+- name: identity anchor on every card
 
 **Design Tradeoff:**
 The dot scale is different per category so the dots stay readable at every level. A Vulnerable language with 500,000 speakers and an On the Brink language with 1 speaker both need their dots to mean something visually. A consistent global scale would be more honest but would make the high-end cards unreadable.
 
 **What I'd Improve With More Time:**
-The dot scaling per category was a practical call made quickly. With more time I would test whether a consistent global scale where the contrast between a full screen and one dot is even more dramatic would be worth the readability tradeoff at the high end.
+The dot scaling per category was a practical call made quickly. With more time I would test whether a consistent global scale where the contrast between a full screen and one dot is even more dramatic would be worth the readability tradeoff at the high end
 
 ---
 
@@ -105,74 +90,81 @@ The dot scaling per category was a practical call made quickly. With more time I
 **Purpose:** Create the GitHub repo, scaffold the project, and wire up continuous deployment so the live URL exists from day one.
 
 **High-Level Tasks:**
-- [ ] Create a new public GitHub repository
-- [ ] Choose stack (Vanilla HTML/CSS/JS vs. framework) and scaffold the project
-- [ ] Connect the repo to Vercel / Netlify / GitHub Pages for auto-deploy on push
-- [ ] Confirm live URL resolves to a placeholder page
-- [ ] Copy the dataset JSON file into the project
+- [x] Create a new public GitHub repository
+- [x] Choose stack (Vanilla HTML/CSS/JS vs. framework) and scaffold the project
+- [x] Connect the repo to Vercel / Netlify / GitHub Pages for auto-deploy on push
+- [x] Confirm live URL resolves to a placeholder page
+- [x] Copy the dataset JSON file into the project
 
 ---
 
 ### Section 2 — Implementation Notes
-*(Leave these fields empty for now — they will be populated during execution)*
 
 **Analysis:**
-[empty]
+I wanted to keep the deploy as simple as possible so I could focus time on the actual experience rather than build tooling 
 
 **Options / Angles Considered:**
-[empty]
+I considered using a framework like Angular for the component structure, and Vercel or Netlify for deployment. I also looked at whether SCSS was worth adding for the styling layer. Both would have added a build step and more configuration overhead. Given the 4 to 6 hour constraint that tradeoff I didn't think it was worth it
 
 **Decision Made:**
-[empty]
+Vanilla HTML, CSS, and JS with GSAP loaded via CDN. GitHub Pages for deployment
+
+Project structure: index.html at the root, css and js in their own folders, the dataset copied into a data folder
 
 **Design Tradeoff:**
-[empty]
+I considered SCSS for the styling layer since the project has a defined set of design tokens and category colors that would benefit nesting. I ruled it out because SCSS requires a compile step even in a simple project
 
 **AI Workflow Notes:**
-- Prompt used: [empty]
-- What worked: [empty]
-- What didn't work / done manually instead: [empty]
+- Prompt used: "scaffold a vanilla HTML CSS JS project structure for a single page data experience. No framework, no build step, GSAP via CDN. Set up the folder structure, a base HTML file with correct meta tags and script loading, a CSS and a JS placeholder. The project will be deployed to GitHub Pages from the main branch root."
 
 **What I'd Improve With More Time:**
-[empty]
-
+With more time I would have set up SCSS properly. I ruled it out because of the compile step but the category color system and token structure would have been cleaner to manage in SCSS
 ---
 
 ## STEP 4: Design the Visual Language
 
 ### Section 1 — Plan
-**Purpose:** Establish the typography, color palette, spacing scale, and overall visual tone before writing a single line of UI code.
+**Purpose:** Establish the typography, color palette, spacing scale, and overall visual tone before writing a single line of UI code
+
+
+Vulnerable
+#2FD6C3
+Definitely
+#22B5DA
+Severely
+#3E8DE9
+Critically
+#5C6FF0
+On the Brink
+#8E5BE8
+Extinct
+#6F6796
+
+
+fonts: 
+Space Grotesk 
+Space Mono 
 
 **High-Level Tasks:**
-- [ ] Choose a typeface pairing (or single typeface) that matches the emotional register
-- [ ] Define a color palette (background, foreground, accent, data-encoding colors)
-- [ ] Decide on layout structure: full-bleed, constrained column, grid, etc.
-- [ ] Sketch or wireframe the key screen states (desktop + mobile)
+- [x] Choose a typeface pairing (or single typeface) that matches the emotional register
+- [x] Define a color palette (background, foreground, accent, data-encoding colors)
+- [x] Decide on layout structure: full-bleed, constrained column, grid, etc.
+- [x] Sketch or wireframe the key screen states (desktop + mobile)
 
 ---
 
 ### Section 2 — Implementation Notes
-*(Leave these fields empty for now — they will be populated during execution)*
 
 **Analysis:**
-[empty]
+The design came before the build. I had the color system and type choices locked in Figma before writing any code, which made the implementation straightforward
 
-**Options / Angles Considered:**
-[empty]
 
 **Decision Made:**
-[empty]
+Dark background (#0B0B0C), near-white text (#F2F1EE). Two typefaces: Space Grotesk for display and identity, Space Mono for data and labels. Six status tier colors
 
-**Design Tradeoff:**
-[empty]
-
-**AI Workflow Notes:**
-- Prompt used: [empty]
-- What worked: [empty]
-- What didn't work / done manually instead: [empty]
 
 **What I'd Improve With More Time:**
-[empty]
+More time on the mobile type scale. The clamp() ranges work but I set them quickly and did not test them as carefully as I would have liked
 
 ---
 
@@ -182,36 +174,26 @@ The dot scaling per category was a practical call made quickly. With more time I
 **Purpose:** Lay down the full responsive page skeleton — semantic HTML structure, CSS custom properties, reset, typography, and base layout — so all subsequent feature work has a clean foundation.
 
 **High-Level Tasks:**
-- [ ] Write semantic HTML structure (header, main, sections, footer as needed)
-- [ ] Define CSS custom properties for the design tokens (colors, type scale, spacing)
-- [ ] Implement responsive layout with CSS Grid or Flexbox
-- [ ] Verify the shell renders correctly at 375px (mobile) and 1440px (desktop)
-- [ ] Load fonts (Google Fonts CDN or self-hosted)
+- [x] Write semantic HTML structure (header, main, sections, footer as needed)
+- [x] Define CSS custom properties for the design tokens (colors, type scale, spacing)
+- [x] Implement responsive layout with CSS Grid or Flexbox
+- [x] Verify the shell renders correctly at 375px (mobile) and 1440px (desktop)
+- [x] Load fonts (Google Fonts CDN or self-hosted)
 
 ---
 
 ### Section 2 — Implementation Notes
-*(Leave these fields empty for now — they will be populated during execution)*
 
 **Analysis:**
-[empty]
+The scaffold went in quickly because the design was already decided. The main structural choices came from needing the header to persist across both the intro and the category page, which meant the initial body-as-flex-column approach had to be refactored once I added the second section
 
 **Options / Angles Considered:**
-[empty]
-
-**Decision Made:**
-[empty]
-
-**Design Tradeoff:**
-[empty]
+I started with the body as a flex column with the header as a flex child. That worked fine for the intro alone but broke when I added the scroll container for two-page snap behavior. Refactored to a fixed header with a dedicated scroll container below it. I also considered splitting design tokens into a separate file but kept everything in style.css given how small the project is
 
 **AI Workflow Notes:**
-- Prompt used: [empty]
-- What worked: [empty]
-- What didn't work / done manually instead: [empty]
-
-**What I'd Improve With More Time:**
-[empty]
+- Prompt used: "scaffold a vanilla HTML CSS JS project structure for a single page data experience. No framework, no build step, GSAP via CDN. Folder structure, base HTML with correct meta tags and script loading, CSS with design tokens and a reset, and a JS placeholder"
+- What worked: Folder structure and base files were solid. The token setup was clean
+- What didn't work / done manually instead: Selectors came out as IDs instead of classes throughout. Fixed manually. Caught that intro-statement was position: fixed which would have caused it to bleed over the experience page on scroll
 
 ---
 
@@ -502,26 +484,3 @@ The dot scaling per category was a practical call made quickly. With more time I
 - [ ] Reply to the email thread with all four items: deployed URL, GitHub repo, Loom link, and a note on where the README lives
 
 ---
-
-### Section 2 — Implementation Notes
-*(Leave these fields empty for now — they will be populated during execution)*
-
-**Analysis:**
-[empty]
-
-**Options / Angles Considered:**
-[empty]
-
-**Decision Made:**
-[empty]
-
-**Design Tradeoff:**
-[empty]
-
-**AI Workflow Notes:**
-- Prompt used: [empty]
-- What worked: [empty]
-- What didn't work / done manually instead: [empty]
-
-**What I'd Improve With More Time:**
-[empty]

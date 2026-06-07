@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Last Word — Endangered Languages</title>
+  <title>Endangered Languages</title>
   <meta name="description" content="An interactive experience about the languages we are losing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
@@ -12,28 +15,84 @@
 </head>
 <body>
 
-  <!-- Header -->
-   <header id="header" class="header">
-      <div class="title">
-        <p>Endangered Languages</p>
+  <header class="header">
+    <span class="wordmark">Endangered Languages</span>
+  </header>
+
+  <div class="scroll-container">
+
+    <section id="intro" class="intro">
+      <div id="dot-field" class="dot-field" aria-hidden="true"></div>
+      <div class="intro-statement">
+        <div class="statement-scrim"></div>
+        <h1 class="statement-heading">Another language goes extinct every two weeks.</h1>
+        <p class="statement-sub">This page will be out of date before you leave.</p>
       </div>
-   </header>
-  <!-- Opening screen -->
-  <section id="intro" class="intro">
-    <div class="dot-canvas"></div>
-    <div class="intro-text">
-      <p>Another language goes extinct every <span>two weeks</span></p>
-      <p>This page will be out of date before you leave.</p>
-    </div>
-    <button id="learn-more" class="btn-learn-more">Learn More</button>
-  </section>
+      <div class="scroll-indicator" aria-label="Scroll to explore">
+        <span class="scroll-label">Scroll</span>
+        <div class="scroll-caret"></div>
+      </div>
+    </section>
 
-  <!-- Main experience -->
-  <main id="experience" class="experience" hidden>
+    <main id="experience" class="experience">
 
-    <!-- Category sections -->
+      <div class="category-card card--vulnerable">
+        <div class="category-dots">
+          <span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span>
+        </div>
+        <h2 class="category-name">Vulnerable</h2>
+        <p class="category-range">100,000+ speakers</p>
+        <p class="category-desc">Children still grow up with it, but mostly at home.</p>
+      </div>
 
-  </main>
+      <div class="category-card card--definitely-endangered">
+        <div class="category-dots">
+          <span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span>
+        </div>
+        <h2 class="category-name">Definitely Endangered</h2>
+        <p class="category-range">10,000 - 100,000 speakers</p>
+        <p class="category-desc">Children are growing up without it. The generation before them did not pass it on.</p>
+      </div>
+
+      <div class="category-card card--severely-endangered">
+        <div class="category-dots">
+          <span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span>
+        </div>
+        <h2 class="category-name">Severely Endangered</h2>
+        <p class="category-range">1,000 - 10,000 speakers</p>
+        <p class="category-desc">Grandparents speak it. Parents understand it but switched to something else. The children never learned.</p>
+      </div>
+
+      <div class="category-card card--critically-endangered">
+        <div class="category-dots">
+          <span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span>
+        </div>
+        <h2 class="category-name">Critically Endangered</h2>
+        <p class="category-range">100 - 1,000 speakers</p>
+        <p class="category-desc">The people who still speak it are old. Most use it rarely, with whoever is left.</p>
+      </div>
+
+      <div class="category-card card--on-the-brink">
+        <div class="category-dots">
+          <span class="category-dot"></span><span class="category-dot"></span>
+        </div>
+        <h2 class="category-name">On the Brink</h2>
+        <p class="category-range">1 - 100 speakers</p>
+        <p class="category-desc">You could fit everyone who speaks it in a single room. Most of them are aging.</p>
+      </div>
+
+      <div class="category-card card--extinct">
+        <div class="category-dots">
+          <span class="category-dot"></span>
+        </div>
+        <h2 class="category-name">Extinct</h2>
+        <p class="category-range">0 speakers</p>
+        <p class="category-desc">Nobody speaks it anymore. What's left lives in recordings.</p>
+      </div>
+
+    </main>
+
+  </div>
 
 </body>
 </html>
