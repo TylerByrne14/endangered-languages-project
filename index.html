@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Endangered Languages</title>
-  <meta name="description" content="An interactive experience about the languages we are losing." />
+  <meta name="description" content="Interactive data experience showing endangered languages by speaker count" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -36,7 +36,7 @@
 
     <main id="experience" class="experience">
 
-      <div class="category-card card--vulnerable">
+      <div class="category-card card--vulnerable" data-index="0">
         <div class="category-dots">
           <span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span>
         </div>
@@ -45,7 +45,7 @@
         <p class="category-desc">Children still grow up with it, but mostly at home.</p>
       </div>
 
-      <div class="category-card card--definitely-endangered">
+      <div class="category-card card--definitely-endangered" data-index="1">
         <div class="category-dots">
           <span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span>
         </div>
@@ -54,7 +54,7 @@
         <p class="category-desc">Children are growing up without it. The generation before them did not pass it on.</p>
       </div>
 
-      <div class="category-card card--severely-endangered">
+      <div class="category-card card--severely-endangered" data-index="2">
         <div class="category-dots">
           <span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span>
         </div>
@@ -63,7 +63,7 @@
         <p class="category-desc">Grandparents speak it. Parents understand it but switched to something else. The children never learned.</p>
       </div>
 
-      <div class="category-card card--critically-endangered">
+      <div class="category-card card--critically-endangered" data-index="3">
         <div class="category-dots">
           <span class="category-dot"></span><span class="category-dot"></span><span class="category-dot"></span>
         </div>
@@ -72,27 +72,70 @@
         <p class="category-desc">The people who still speak it are old. Most use it rarely, with whoever is left.</p>
       </div>
 
-      <div class="category-card card--on-the-brink">
-        <div class="category-dots">
-          <span class="category-dot"></span><span class="category-dot"></span>
-        </div>
-        <h2 class="category-name">On the Brink</h2>
-        <p class="category-range">1 - 100 speakers</p>
-        <p class="category-desc">You could fit everyone who speaks it in a single room. Most of them are aging.</p>
-      </div>
-
-      <div class="category-card card--extinct">
-        <div class="category-dots">
-          <span class="category-dot"></span>
-        </div>
-        <h2 class="category-name">Extinct</h2>
-        <p class="category-range">0 speakers</p>
-        <p class="category-desc">Nobody speaks it anymore. What's left lives in recordings.</p>
-      </div>
-
     </main>
 
+    <section id="last-speakers" class="last-speakers">
+      <div class="last-left">
+        <p class="last-kicker">The last speakers.</p>
+        <h2 class="last-heading">Eight languages survive on five people or fewer.</h2>
+        <p class="last-sub">Two are down to one.</p>
+      </div>
+
+      <div class="last-right">
+        <div class="last-circle-outer">
+          <div class="last-circle-inner">
+            <div class="last-dot"></div>
+          </div>
+        </div>
+        <div class="last-langs">
+          <p class="last-lang">Yaghan · 1 speaker</p>
+          <p class="last-lang">Taushiro · 1 speaker</p>
+        </div>
+      </div>
+
+      <div class="last-bottom">
+        <div class="last-lang-item">
+          <div class="last-lang-dots">
+            <span class="last-lang-dot"></span><span class="last-lang-dot"></span><span class="last-lang-dot"></span><span class="last-lang-dot"></span><span class="last-lang-dot"></span>
+          </div>
+          <span class="last-lang-name">Wintu</span>
+        </div>
+        <div class="last-lang-item">
+          <div class="last-lang-dots">
+            <span class="last-lang-dot"></span><span class="last-lang-dot"></span><span class="last-lang-dot"></span><span class="last-lang-dot"></span><span class="last-lang-dot"></span>
+          </div>
+          <span class="last-lang-name">Tehuelche</span>
+        </div>
+        <div class="last-lang-item">
+          <div class="last-lang-dots">
+            <span class="last-lang-dot"></span><span class="last-lang-dot"></span><span class="last-lang-dot"></span><span class="last-lang-dot"></span>
+          </div>
+          <span class="last-lang-name">Njerep</span>
+        </div>
+        <div class="last-lang-item">
+          <div class="last-lang-dots">
+            <span class="last-lang-dot"></span><span class="last-lang-dot"></span><span class="last-lang-dot"></span>
+          </div>
+          <span class="last-lang-name">N|uu</span>
+        </div>
+        <div class="last-lang-item">
+          <div class="last-lang-dots">
+            <span class="last-lang-dot"></span><span class="last-lang-dot"></span>
+          </div>
+          <span class="last-lang-name">Ter Sami</span>
+        </div>
+        <div class="last-lang-item">
+          <div class="last-lang-dots">
+            <span class="last-lang-dot"></span><span class="last-lang-dot"></span>
+          </div>
+          <span class="last-lang-name">Lemerig</span>
+        </div>
+      </div>
+    </section>
+
   </div>
+
+  <div id="language-view" class="language-view" aria-hidden="true"></div>
 
 </body>
 </html>
